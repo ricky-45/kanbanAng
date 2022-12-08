@@ -1,0 +1,122 @@
+<body style="padding: 0px;">
+    <div id="modal-content-wrapper " class="d-inline-flex col-lg-11" >
+
+        <div class="col" style="padding: 0px;">
+            <header id="modal-header" class="col-lg-12" style="align-content: initial;">
+                <h1 id="modal-title" class="p-2" style="font-size: 30;">Candidate Info</h1>
+                <!-- <marquee direction="up" height="50px">Candidate Info</marquee> -->
+            </header>
+
+            <table class="table" *ngIf="candidateObj!=undefined" style="margin-left: 10px;text-align: center;">
+                <thead>
+                    <tr>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            CandidateId
+                        </td>
+                        <td>
+                            {{candidateObj.candidateId}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            {{candidateObj.candidateName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Age
+                        </td>
+                        <td>
+                            {{candidateObj.age}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Skills
+                        </td>
+                        <td>
+                            {{candidateObj.skills}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Technology
+                        </td>
+                        <td>
+                            {{candidateObj.technology}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Experience
+                        </td>
+                        <td>
+                            {{candidateObj.totalExperiance}}
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+           
+        </div>
+
+
+
+        <div class="container col-lg-6" style="max-height: max-content; margin-top: -21px;margin-left: 50px;"  >
+            <br>
+            <h1 class="p-2" style="font-size: 30;">Add Attachments</h1>
+            <div >
+            <form #uploadForm="ngForm" >
+                <div class="form-group">
+                    <label for="file">Image Upload</label>
+                    <input type="file" class="form-control" accept="image/*" (change)="onSelectFile($event)" style="height: 30px;">
+                    <br>
+                    <button type="button" class="btn btn-success" (click)="submitImage(uploadForm.value) " style="margin-top: -10px;" >Submit</button>
+                </div><br>
+               
+            </form>
+        </div>        <br>
+
+        
+            <form>
+                
+                <br>
+                <div class="form-group" style=" margin-top: -60px;margin-right: 50px;">
+                    <input #txt type="text" placeholder="Comments"  style="border-radius: 10px;"/><br>
+                    <br>
+                     <button class="btn btn-info" (click)="getComment(txt.value)"  style="margin-top: -10px;" >Submit</button>                     
+                </div>
+                <br>
+                <div>
+                    <thead>
+                        <tr>
+                            <th scope="col">Comments</th>
+                        </tr>
+                        </thead>
+                    <table *ngFor="let item of commentList" >
+                        <tr>   
+                            <td>{{item.comment}}</td>
+                        <tr>
+                    </table>
+                </div>   
+                <pre></pre>
+                
+                <div class="rg   d-flex justify-content-start">
+                <footer id="modal-footer" class="col-lg-12">
+                <button  mat-raised-button id="modal-close-button" (click)="closeModal()" >
+                 Close</button>
+                </footer> 
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,54 @@
+
+
+
+mat-form-field{
+    margin-top:10px;
+    margin-right:10px;
+    color:#45beaa;
+    /* border:yellow;
+    border-style:solid; */
+  }
+  
+  mat-label{
+    color:#45beaa;
+    margin-bottom:5px;
+    padding-bottom:10px;
+  
+    /* border:red;
+    border-style:solid; */
+  
+  }
+  
+  mat-select{
+    /* border:white;
+    border-style:solid; */
+    padding-left:15px;
+    margin-right:30px;
+    margin-bottom:5px;
+  }
+  
+  mat-option{
+    color:#45beaa;
+  }
+  
+  
+  mat-select-content{
+    color:#45beaa !important;
+    margin-left:20px;
+    background-color: red;
+  }
+  
+  
+  :host/deep/.mat-select-value-text{
+    color:#45beaa !important;
+  }
+  
+  :host/deep/.mat-select-arrow{
+    color:#45beaa
+  }
+  
+  :host/deep/.mat-form-field-underline{
+   background-color:#45beaa !important;
+   padding-right:25px !important;
+  }
+  

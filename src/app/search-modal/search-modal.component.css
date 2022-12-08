@@ -1,0 +1,64 @@
+body{
+
+    color: blue;
+    background-image: linear-gradient(#FF8787,#BCE29E);
+    border: 1px solid red;
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+   
+    
+    
+}
+
+
+.scrollbar{
+
+    overflow-x: auto;
+    scrollbar-base-color: #45BEAA;
+    
+}
+
+
+
+td{
+
+    border: 2px solid white;
+    /* padding: 6px; */
+    width:100px
+     ;
+}
+
+
+button{
+	position:relative;
+    bottom: 0px;
+    margin-left: 10px;
+    color: white;
+
+    background-color:#45BEAA;
+}
+
+
+button:hover{
+
+    
+    background-color: white;
+
+    border:1px solid;
+
+    color:#0e7060;
+}
+
+
+
+
+
+
+/* table{
+
+    text-overflow: ellipsis ;
+    overflow: hidden;
+} 
+
+ */

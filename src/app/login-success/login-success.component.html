@@ -1,0 +1,466 @@
+<!-- <body style="color: #45beaa;">  -->
+  
+<div style="
+    background-image: linear-gradient(to left, #8debff, rgb(78, 161, 78));
+    height: 150%;
+  ">
+  <!-- <nav id="navbarMenu" class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <button id="modalButton" type="button" class="btn btn-info mx-3" (click)="registerCandidate()">
+      Register Candidate
+    </button>
+
+    <div class="spacer"></div>
+    <form class="form-inline d-flex align-items-center flex-nowrap ">
+      <mat-form-field appearance="fill">
+          <mat-label>Choose Filter</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let item of filter" [value]="item.value" (click)="displayFilter(item)">
+              {{ item.viewValue }}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+     
+
+       <ul >
+       <li >
+      <input #txt class="form-control mr-sm-2  " style="margin-top: 15px;" type="search" placeholder="Search" aria-label="Search" /></li></ul>
+          <button class="btn btn-outline-success my-2 my-sm-0 " type="submit" style="margin-left: 5px"
+        (click)="search(filterValue, txt.value)">
+        Search
+      </button>
+      
+      
+    </form>
+
+  </nav> -->
+  <!-- <nav id="navbarMenu" class="navbar navbar-light bg-light">
+    <!-- <button id="modalButton" type="button" class="btn mx-3" (click)="registerCandidate()">
+      Register Candidate
+    </button>  -->
+    <nav id="navbarMenu" class="navbar navbar-expand navbar-dark bg-dark">
+      <button id="modalButton" type="button" class="btn mx-3" (click)="registerCandidate()">
+        Register Candidate
+      </button> 
+
+<!-- 
+      <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"> -->
+
+
+
+      
+
+
+      
+  <a href="#" class="navbar-brand">
+    <img src="https://cdn.cookielaw.org/logos/a1193491-22b8-424b-b694-15702547fbdb/801d1787-9693-44ca-9c8f-eb1275195361/91530d9a-0ba8-4ec0-bedf-cf49db8da706/Worldline-Mint-Horizontal.png"
+          width="45" alt="" class="d-inline-block align-middle mr-2"></a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav" style="text-align:center">
+        <li class="nav-item active">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" [routerLink]="['']">Logout</a>
+        </li>
+        <li class="nav-item active" (click)="openReport()" style="cursor:pointer">
+          <a  class="nav-link">Report</a>
+        </li>
+      </ul>
+  </div>
+  
+
+
+
+
+    
+      <mat-form-field class="mt-2" style="height: 55px; width: 130px" >
+        <mat-label class="mt-5" id="modalButton" style="color: white;">Choose Filter</mat-label>
+
+        <mat-select style="height: 10px; width: 130px;color: white; ">
+          <input ng-model="searchText">
+          <mat-option style="margin-bottom: 0px ;" *ngFor="let item of fil " [value]="item.value"
+            (click)="displayFilter(item)">
+            {{ item.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <input #txt [(ngModel)]="searchText" class="form-control ms-3 mr-sm-2"  type="search"  placeholder="Search" aria-label="Search" />
+      
+      <button class="btn btn-outline-success ms-3 my-sm-0" type="submit" style="margin-left: 5px"
+        (click)="search(filterValue, txt.value)">
+        Search
+      </button>
+    
+  </nav>
+
+
+  <div cdkDropListGroup>
+    <div class="example-container" style="width: 350px; padding-left: 70px">
+      <div class="border border-light p-2 m-3 bg-light">
+        <blockquote class="blockquote" style="color: black; text-align: center">
+          BackLog
+        </blockquote>
+        <div style="max-height: 600px; overflow-y: auto" divid="#divId" name="mydiv" cdkDropList #backlg="cdkDropList"
+          [cdkDropListData]="backlog" [cdkDropListConnectedTo]="[inprogress, inreview, doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div id="modalId" class="example-box" style="
+              color: black;
+              background-image: linear-gradient(#c4e759, #6de195);
+              border-radius: 8px;
+              margin: 5px 5px 5px 5px;
+              height: max-content;
+            " *ngFor="let item of backlog | filter:searchText; let indexofEle = index " cdkDrag>
+            <div class="bar-red"></div>
+            <div class="container">
+              <table>
+                <tr>
+                  <td>{{ item.candidateId }}</td>
+                </tr>
+                <tr>
+                  <td>{{ item.candidateName }}</td>
+                </tr>
+                <tr>
+                  <td>Loc- {{ item.location }}</td>
+                </tr>
+                <tr>
+                  <td>LWD- {{ item.expectedLwd }}</td>
+                </tr>
+                <tr>
+                  <td>Rel Exp- {{ item.relevantExperiance }}</td>
+                </tr>
+                <!-- <tr>
+                    
+                  <input #dil type="hidden" value={{item.candidateId}}/>
+                  <button (click)="deleteCandidate(dil.value)">Delete candidate</button>
+                </tr>
+                 -->
+
+              </table>
+
+              <!-- custom tag print -->
+              <br />
+              <table>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.gcm" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="GCM" #gcmLevel="ngModel" (keyup.enter)="
+                        displayGCM(gcmLevel.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+
+                  <td>
+                    <textarea [(ngModel)]="item.duedate" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="DueDate" #ddate="ngModel" (keyup.enter)="
+                        displayDueDate(ddate.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.position" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Position" #pos="ngModel" (keyup.enter)="
+                        displayPosition(pos.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.project" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Project" #proj="ngModel" (keyup.enter)="
+                        displayProject(proj.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+
+                <tr>
+                  <button class="btn btn-info" (click)="display(item)">
+                    More Info
+                  </button>
+                </tr>
+              </table>
+              <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
+
+                <mat-icon aria-label="Delete" (click)="deleteCandidate(item.candidateId)">delete</mat-icon>
+    
+              </button>
+            </div>
+            <!-- ------------- -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container" style="width: 350px; padding-left: 70px">
+      <div class="border border-light p-2 m-3 bg-light">
+        <blockquote class="blockquote" style="color: black; text-align: center">
+          In Progress
+        </blockquote>
+        <div style="max-height: 600px; overflow-y: auto" cdkDropList #inprogress="cdkDropList"
+          [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="[inreview, backlg, doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" id="modalId" style="
+              color: black;
+              background-image: linear-gradient(#c1e3ff, #abc7ff);
+              border-radius: 8px;
+              margin: 5px 5px 5px 5px;
+              height: max-content;
+            " *ngFor="let item of inProgress |filter:searchText" cdkDrag>
+            <div class="bar-orange"></div>
+            <div class="container " style="margin-top: -14px;">
+              <table>
+                <br />
+                <tr>
+                  <td>{{ item.candidateId }}</td>
+                </tr>
+                <tr>
+                  <td>{{ item.candidateName }}</td>
+                </tr>
+                <tr>
+                  <td>Loc- {{ item.location }}</td>
+                </tr>
+                <tr>
+                  <td>LWD- {{ item.expectedLwd }}</td>
+                </tr>
+                <tr>
+                  <td>Rel Exp- {{ item.relevantExperiance }}</td>
+                </tr>
+                
+              </table>
+              <br />
+              <table>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.gcm" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="GCM" #gcmLevel="ngModel" (keyup.enter)="
+                        displayGCM(gcmLevel.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.position" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Position" #pos="ngModel" (keyup.enter)="
+                        displayPosition(pos.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.duedate" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="DueDate" #ddate="ngModel" (keyup.enter)="
+                        displayDueDate(ddate.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.project" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Project" #proj="ngModel" (keyup.enter)="
+                        displayProject(proj.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <button class="btn btn-info" (click)="display(item)">
+                    More Info
+                  </button>
+                  <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
+
+                    <mat-icon aria-label="Delete" (click)="deleteCandidate(item.candidateId)">delete</mat-icon>
+        
+                  </button>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container" style="width: 350px; padding-left: 70px">
+      <div class="border border-light p-2 m-3 bg-light">
+        <blockquote class="blockquote" style="color: black; text-align: center">
+          In Review
+        </blockquote>
+        <div style="max-height: 600px; overflow-y: auto" cdkDropList #inreview="cdkDropList"
+          [cdkDropListData]="inReview" [cdkDropListConnectedTo]="[doneList, backlg, inprogress]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" id="modalId" style="
+              color: black;
+              background-image: linear-gradient(#ad88ff, #6aacff);
+              border-radius: 8px;
+              margin: 5px 5px 5px 5px;
+              height: max-content;
+            " *ngFor="let item of inReview| filter:searchText" cdkDrag>
+            <div class="bar-yellow"></div>
+            <div class="container" style="margin-top: -14px;">
+              <table>
+                <br />
+                <tr>
+                  <td>{{ item.candidateId }}</td>
+                </tr>
+                <tr>
+                  <td>{{ item.candidateName }}</td>
+                </tr>
+                <tr>
+                  <td>Loc- {{ item.location }}</td>
+                </tr>
+                <tr>
+                  <td>LWD- {{ item.expectedLwd }}</td>
+                </tr>
+                <tr>
+                  <td>Rel Exp- {{ item.relevantExperiance }}</td>
+                </tr>
+                <!-- <tr>
+                  <td>{{item.candidateId}}</td>
+                  <input #dil type="hidden" value={{item.candidateId}}/>
+                  <button (click)="deleteCandidate(dil.value)">Delete candidate</button>
+                </tr> -->
+              </table>
+              <br />
+              <table>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.gcm" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="GCM" #gcmLevel="ngModel" (keyup.enter)="
+                        displayGCM(gcmLevel.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.position" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Position" #pos="ngModel" (keyup.enter)="
+                        displayPosition(pos.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.duedate" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="DueDate" #ddate="ngModel" (keyup.enter)="
+                        displayDueDate(ddate.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.project" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Project" #proj="ngModel" (keyup.enter)="
+                        displayProject(proj.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <button class="btn btn-info" (click)="display(item)">
+                    More Info
+                  </button>
+                  <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
+
+                    <mat-icon aria-label="Delete" (click)="deleteCandidate(item.candidateId)">delete</mat-icon>
+        
+                  </button>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container" style="width: 350px; padding-left: 70px">
+      <div class="border border-light p-2 m-3 bg-light">
+        <blockquote class="blockquote" style="color: black; text-align: center">
+          Done
+        </blockquote>
+        <div style="max-height: 600px; overflow-y: auto" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[backlg, inprogress, inreview]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" id="modalId" style="
+              color: black;
+              background-image: linear-gradient(#fdeb82, #d279ee);
+              border-radius: 8px;
+              margin: 5px 5px 5px 5px;
+              height: max-content;
+            " *ngFor="let item of done| filter:searchText" cdkDrag>
+            <div class="bar-green"></div>
+            <div class="container" style="margin-top: -14px;">
+              <table>
+                <br />
+                <tr>
+                  <td>{{ item.candidateId }}</td>
+                </tr>
+                <tr>
+                  <td>{{ item.candidateName }}</td>
+                </tr>
+                <tr>
+                  <td>Loc- {{ item.location }}</td>
+                </tr>
+                <tr>
+                  <td>LWD- {{ item.expectedLwd }}</td>
+                </tr>
+                <tr>
+                  <td>Rel Exp- {{ item.relevantExperiance }}</td>
+                </tr>
+                <!-- <tr>
+                  <td>{{item.candidateId}}</td>
+                  <input #dil type="hidden" value={{item.candidateId}}/>
+                  <button (click)="deleteCandidate(dil.value)">Delete candidate</button>
+                </tr> -->
+              </table>
+              <br />
+              <table>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.gcm" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="GCM" #gcmLevel="ngModel" (keyup.enter)="
+                        displayGCM(gcmLevel.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.position" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Position" #pos="ngModel" (keyup.enter)="
+                        displayPosition(pos.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea [(ngModel)]="item.duedate" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="DueDate" #ddate="ngModel" (keyup.enter)="
+                        displayDueDate(ddate.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                  <td>
+                    <textarea [(ngModel)]="item.project" class="textarea-inline-control" cdkTextareaAutosize
+                      placeholder="Project" #proj="ngModel" (keyup.enter)="
+                        displayProject(proj.value, item.candidateId)
+                      ">
+                    </textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <button class="btn btn-info" (click)="display(item)">
+                    More Info
+                  </button>
+                  <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
+
+                    <mat-icon aria-label="Delete" (click)="deleteCandidate(item.candidateId)">delete</mat-icon>
+        
+                  </button>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

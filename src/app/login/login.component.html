@@ -1,0 +1,53 @@
+<body>
+  <section class="vh-100 " style="color: #3e998a">
+    <div class="container-fluid  py-5 px-5 h-100 ">
+      <div class="row d-flex justify-content-center align-items-center h-90 w-75">
+        <div class="col-md-3 col-lg-7 col-xl-5">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Worldline.jpg" class="w-75 h-75" />
+        </div>
+        <div class="col-md-8 col-lg-5 col-xl-4 offset-xl-1">
+          <h1 class="font-weight-bold py-3" style="color: #45beaa">
+            Welcome to Worldline Hiring Portal
+          </h1>
+          <form #loginform="ngForm" (ngSubmit)="logInUser()">
+            <!-- {{loginform.form.valid}}-->
+            <small class="text-danger">{{ msg }}</small>
+            <div class="form-row">
+              <div class="col-lg-9">
+                <label for="dasId">DasID:</label>
+                <input type="dasId" class="form-control my-3 p-3" placeholder="Enter DasId" name="dasId"
+                  [(ngModel)]="user.dasId" required pattern="([W])\d\d\d\d\d\d" #dasid="ngModel"
+                  [class.is-invalid]="dasid.invalid && dasid.touched" />
+                <!-- <small class="text-danger" [class.d-none]="dasid.valid || dasid.untouched">DasId is required field</small> -->
+
+                <div *ngIf="dasid.errors && dasid.invalid && dasid.touched">
+                  <small class="text-danger" *ngIf="dasid.errors?.['required']">DasId is a required field</small>
+                  <small class="text-danger" *ngIf="dasid.errors?.['pattern']">Enter the correct format of Dasid</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-9">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control my-2 p-3" placeholder="Enter password" name="password"
+                  [(ngModel)]="user.password" required #password="ngModel"
+                  [class.is-invalid]="password.invalid && password.touched" />
+                <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required
+                  field</small>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="class-row">
+                <label><input type="checkbox" name="remember" /> Remember me</label>
+              </div>
+              <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info mt-3 mb-5">
+                Login
+              </button>
+            </div>
+          </form>
+          <small class="float-end" (click)="gotoregistration()"><p>New User? Register here</p></small>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
